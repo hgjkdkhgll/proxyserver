@@ -37,4 +37,18 @@ res.on("end", () => {
 });
 });
 });
-
+app.post('/purchase/:id',(req) => {  
+    http.request({path:"/purchase/"+req.params.id,port:port,host:order_server} , res => {  
+        
+        console.log(res.statusCode);
+        console.log("\n"); 
+         let data = "";
+    res.on("data", chunk => {
+        data += chunk;
+});
+res.on("end", () => {
+    let url = JSON.parse(data);
+    console.log(url);
+});
+});
+});
