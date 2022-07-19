@@ -22,4 +22,19 @@ res.on("end", () => {
 });
 });
 
+app.get('/info/:id',(req) => {  
+    http.get("http://"+catalog_server+"/books/"+req.params.id , res => {  
+        
+        console.log(res.statusCode);
+        console.log("\n"); 
+         let data = "";
+    res.on("data", chunk => {
+        data += chunk;
+});
+res.on("end", () => {
+    let url = JSON.parse(data);
+    console.log(url);
+});
+});
+});
 
