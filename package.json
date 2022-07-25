@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/hgjkdkhgll/proxyserver#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "request": "^2.88.2"
   }
 }
