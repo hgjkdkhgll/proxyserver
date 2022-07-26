@@ -43,18 +43,13 @@ app.get('/info/:id',(req,res1) => {
 });
 
 
-
-
 app.post('/purchase/:id',(req,res1) => {  
+    const url = '/api/purchase/' + req.params.id;
     const axios= require('axios');
-    let data={id:""+req.params.id};
-    axios.post('http://'+order_server+'/api/purchase',data).then((res)=>{
-    console.log(res.data);
+    axios.post('http://'+order_server+url).then((res)=>{
     res1.send(res.data);
 }).catch((err)=>{
-    console.log(err);
-    
+    res1.status(404).json(err.response.data);
 });
 });
-
 app.listen(5555);
