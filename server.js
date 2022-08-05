@@ -4,6 +4,7 @@ const http = require('http');
 const order_server = "192.168.175.249:5128";
 const port ="5128";
 const catalog_server = "192.168.175.49:5000";
+const port_out = proccess.env.PORT || 5000;
 
 
 app.get('/search/:category',(req,res1) => {  
@@ -26,10 +27,9 @@ console.log(data);
 });
 
 app.get('/info/:id',(req,res1) => {  
-    http.get("http://"+catalog_server+"/api/books/"+req.params.id , res => {  
+    http.get("http://"+catalog_server+"/api/books/"+req.params.id , res => { 
         
         //res1.sendStatus(res.statusCode);
-
         let data = "";
         res.on("data", chunk => {
                 data += chunk;
