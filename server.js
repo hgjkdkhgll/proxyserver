@@ -23,13 +23,14 @@ res.on("end", () => {
     let url = JSON.parse(data);
     console.log(url);
     res1.send(url);
-    if(flagc==0){
-        flagc=1;
-    }else if(flagc==1){
-        flagc=0;
-    }
+    
 });
 });
+if(flagc==0){
+    flagc=1;
+}else if(flagc==1){
+    flagc=0;
+}
 }
 else {
     console.log("cache here");
@@ -53,13 +54,14 @@ app.get('/info/:id',async(req,res1) => {
             let url = JSON.parse(data);
             console.log(url);
             res1.send(url);
-            if(flagc==0){
-                flagc=1;
-            }else if(flagc==1){
-                flagc=0;
-            }
+           
         });
 });
+if(flagc==0){
+    flagc=1;
+}else if(flagc==1){
+    flagc=0;
+}
 }
 else{ 
     console.log("cache here");
@@ -76,15 +78,16 @@ app.post('/purchase/:id',(req,res1) => {
         if(res.status==200){
             delete info_memory[req.params.id]
         }
-        if(flago==0){
-            flago=1;
-        }else if(flago==1){
-            flago=0;
-        }
+        
     res1.send(res.data);
 }).catch((err)=>{
     res1.status(404).json(err.response?.data);
 });
+if(flago==0){
+    flago=1;
+}else if(flago==1){
+    flago=0;
+}
 });
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ', err);
